@@ -1,42 +1,722 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mudasir - Résumé</title>
+    <meta name="description" content="" />
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Inter:400,700,900);
 
-on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
+      .Navbar ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+      }
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+      html {
+        font-size: 62.5%;
+        box-sizing: border-box;
+      }
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
 
-# Allow one concurrent deployment
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
+      body {
+        margin: 0;
+        background-color: #fff;
+      }
 
-jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          # Upload entire repository
-          path: '.'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .u-cf:before,
+      .u-cf:after {
+        content: " ";
+        display: table;
+      }
+
+      .u-cf:after {
+        clear: both;
+      }
+
+      .u-hug {
+        margin-top: 0 !important;
+      }
+
+      .u-pullRight {
+        float: right;
+      }
+
+      .u-keyline {
+        position: relative;
+      }
+
+      .u-keyline:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        border-top: 1px solid #ddd;
+      }
+
+      .u-link {
+        text-decoration: none;
+        position: relative;
+        display: inline-block;
+      }
+
+      .u-link:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        bottom: 0.2em;
+        width: 100%;
+        height: 2px;
+        background-color: #96ddcf;
+      }
+
+      .u-link:visited:before {
+        background-color: #ddd;
+      }
+
+      .u-link:hover:before {
+        background-color: #fa8072;
+      }
+
+      .u-shadow {
+        text-shadow: 4px 4px 0 #6fd1bd;
+        transition: text-shadow 0.2s ease-in-out;
+      }
+
+      a:hover .u-shadow {
+        text-shadow: -4px -4px 0 salmon;
+      }
+
+      @media (max-width: 767px) {
+        .u-hidden\@sm-down {
+          display: none !important;
+        }
+      }
+
+      @media (max-width: 543px) {
+        .u-hidden\@xs-down {
+          display: none !important;
+        }
+      }
+
+      body {
+        color: #646369;
+        font-size: 1.6rem;
+        font-family: "Inter", Helvetica, Arial, sans-serif;
+        font-weight: normal;
+        line-height: 1.5;
+        letter-spacing: 0.008em;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: #111;
+        line-height: 1.2;
+        font-weight: 900;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      ul,
+      p {
+        margin-top: 1.6rem;
+        margin-bottom: 0;
+      }
+
+      h3,
+      .h3 {
+        font-size: 2rem;
+        margin-top: 3.2rem;
+      }
+
+      a {
+        color: #333;
+      }
+
+      ul {
+        padding-left: 1.8rem;
+      }
+
+      .Title {
+        font-size: 50px;
+        font-size: 8vw;
+        font-family: "Inter", "Open Sans", Helvetica, Arial;
+        font-weight: 900;
+        line-height: 1.1;
+        margin-top: 0;
+        margin-bottom: 0;
+        /* text-transform: uppercase; */
+        display: inline-block;
+      }
+
+      @media (max-width: 525px) {
+        .Title {
+          font-size: 42px;
+        }
+      }
+
+      @media (min-width: 937.5px) {
+        .Title {
+          font-size: 75px;
+        }
+      }
+
+      .Title-sub {
+        font-size: 0.34em;
+        letter-spacing: 0.16em;
+        font-weight: 400;
+        text-transform: none;
+        display: block;
+        margin-top: 1.2rem;
+        padding-top: 1.6rem;
+        border-top: 0.45em solid;
+      }
+
+      .l-Wrapper {
+        width: 80%;
+        max-width: 90rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      @media (max-width: 767px) {
+        .l-Wrapper--reset\@sm-down {
+          width: 100%;
+        }
+      }
+
+      .l-Header {
+        margin-top: 6.4rem;
+        margin-bottom: 3.2rem;
+      }
+
+      .l-Header-col {
+        margin-top: 3.2rem;
+        margin-bottom: 3.2rem;
+      }
+
+      @media (min-width: 544px) {
+        .l-Header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+        }
+
+        .l-Header-col:last-child:not(:first-child) {
+          text-align: right;
+        }
+      }
+
+      .l-Section {
+        margin-top: 6.4rem;
+      }
+
+      .l-Section + .l-Section {
+        position: relative;
+        border-top: 1px solid #ddd;
+      }
+
+      .l-Section + .l-Section:before {
+        content: "";
+        font-size: 50px;
+        font-size: 8vw;
+        position: absolute;
+        top: -0.1rem;
+        border-top: 0.153em solid;
+        width: 4rem;
+      }
+
+      @media (max-width: 525px) {
+        .l-Section + .l-Section:before {
+          font-size: 42px;
+        }
+      }
+
+      @media (min-width: 937.5px) {
+        .l-Section + .l-Section:before {
+          font-size: 75px;
+        }
+      }
+
+      .l-Section-title,
+      .l-Section-content {
+        margin-top: 3.2rem;
+      }
+
+      .l-Section-content > :first-child,
+      .l-Section-content > :first-child > h3 {
+        margin-top: 0;
+      }
+
+      .l-Section-content > p:first-child,
+      .l-Section-content > ul:first-child {
+        margin-top: 0.3rem;
+      }
+
+      .l-Section-group {
+        display: inline;
+      }
+
+      @media (min-width: 768px) {
+        .l-Section {
+          display: flex;
+        }
+
+        .l-Section:before {
+          display: none;
+        }
+
+        .l-Section-title {
+          flex: 0 0 24%;
+        }
+      }
+
+      .l-Footer {
+        font-size: 1.4rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 12.8rem -0.8rem 3.2rem;
+        padding-top: 3.2rem;
+      }
+
+      .l-Footer a {
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .l-Footer a:not(:last-child) {
+        margin-right: 1.6rem;
+      }
+
+      .l-Footer a:hover {
+        color: #111;
+      }
+
+      .l-Footer-col {
+        padding-left: 0.8rem;
+        padding-right: 0.8rem;
+      }
+
+      .Navbar {
+        color: #fff;
+        font-size: 1rem;
+        font-weight: bold;
+        line-height: 4rem;
+        letter-spacing: 0.28rem;
+        text-transform: uppercase;
+        width: 100%;
+        background-color: #111;
+      }
+
+      .Navbar a:not(.Navbar-toggle) {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .Navbar li {
+        display: inline-block;
+      }
+
+      .Navbar a {
+        display: block;
+        padding: 0 0.8rem;
+      }
+
+      a.Navbar-btn {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        background: #6fd1bd;
+      }
+
+      a.Navbar-btn:hover {
+        background: #fa8072;
+      }
+
+      @media (max-width: 767px) {
+        .Navbar {
+          text-align: right;
+        }
+
+        .Navbar ul:not(:first-child) {
+          display: inline-block;
+          padding-right: 1.6rem !important;
+        }
+      }
+
+      .Tag {
+        color: #111;
+        text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4);
+        font-weight: 700;
+        line-height: 1;
+        position: relative;
+        display: inline-block;
+        padding-left: 0.8rem;
+        padding-right: 0.8rem;
+      }
+
+      .Tag:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1em;
+        bottom: 0;
+        margin: auto;
+        border-radius: 0.2rem;
+        background-color: rgba(111, 209, 189, 0.5);
+        transition: all 0.8s 0.4s ease-in-out;
+      }
+
+      .Tag:hover:before {
+        transform: scale(1.05, 2.4);
+        background-color: #6fd1bd;
+        transition-delay: 0s;
+        transition-duration: 0.2s;
+      }
+
+      @media print {
+        html {
+          font-size: 50%;
+        }
+
+        .l-Wrapper {
+          width: 100%;
+          max-width: none;
+        }
+
+        .Navbar,
+        .u-hidden\@print {
+          display: none;
+        }
+
+        .l-Header,
+        .l-Header-col {
+          margin-top: 0;
+        }
+
+        .l-Footer,
+        .l-Section {
+          margin-top: 3.2rem;
+        }
+
+        h3,
+        .h3,
+        .l-Section-title,
+        .l-Section-content {
+          margin-top: 1.8rem;
+        }
+
+        .Title {
+          font-size: 4.5rem;
+        }
+
+        .l-Header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+        }
+
+        .l-Header-col:last-child:not(:first-child) {
+          text-align: right;
+        }
+
+        .l-Section {
+          position: relative;
+          padding-top: 5px;
+          border-top: 1px solid #ddd;
+        }
+
+        .l-Section:before {
+          display: none;
+        }
+
+        .l-Section:after {
+          content: "";
+          position: absolute;
+          top: -1px;
+          left: 0;
+          border-top: 5px solid;
+          width: 4rem;
+        }
+
+        .l-Section-group {
+          display: block;
+          /* page-break-inside: avoid */
+        }
+
+        .Tag {
+          font-weight: 900;
+          display: inline;
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        *,
+        *:before,
+        *:after,
+        p:first-letter,
+        div:first-letter,
+        blockquote:first-letter,
+        li:first-letter,
+        p:first-line,
+        div:first-line,
+        blockquote:first-line,
+        li:first-line {
+          background: transparent !important;
+          color: #000 !important;
+          box-shadow: none !important;
+          text-shadow: none !important;
+        }
+
+        a,
+        a:visited {
+          text-decoration: underline;
+        }
+
+        p,
+        h2,
+        h3,
+        li {
+          orphans: 3;
+          widows: 3;
+        }
+
+        h2,
+        h3 {
+          page-break-after: avoid;
+        }
+
+        .Contact:after {
+          content: "(206) 960-0961";
+          padding-left: 1.6rem;
+        }
+      }
+
+      @page {
+        margin: 2.2cm 2.2cm 1.8cm;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="Navbar">
+      <div class="l-Wrapper l-Wrapper--reset@sm-down">
+        <ul class="u-pullRight u-hidden@xs-down">
+          <li>
+            <a
+              class="Navbar-btn Navbar-btn--main"
+              href="https://github.com/mudasirashraf156"
+              target="_blank"
+            >
+              Download
+              <span>(pdf)</span>
+            </a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a href="https://www.linkedin.com/in/mudasir-ashraf-7a0076226/" target="_blank"
+              >LinkedIn</a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/mudasirashraf156" target="_blank">GitHub</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <article class="l-Wrapper">
+      <div class="l-Header">
+        <div class="l-Header-col">
+          <a>
+            <h1 class="Title">
+              <span class="u-shadow">
+                Mudasir
+                <br />
+                Ashraf
+              </span>
+              <span class="Title-sub">Front-end Developer</span>
+            </h1>
+          </a>
+        </div>
+        <div class="l-Header-col Contact">
+          <div>Kashmir, India</div>
+          <div>
+            <a class="u-link" href="mailto:mudasirashraf156@gmail.com"
+              >mudasirashraf156@gmail.com</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <section class="l-Section">
+        <h2 class="l-Section-title h3 u-hidden@sm-down">Profile</h2>
+        <div class="l-Section-content">
+          <p>
+            I’m a passionate frontend developer with an eye for design
+            aesthetics, experience in designing, developing and managing complex
+            website with responsiveness. I enjoy creating beautiful,
+            user-centered websites and web applications with a strong interest
+            in clean grid design as well as elegant typography. Good eye for
+            design and typography, high attention to detail. Great listener,
+            curious, team player.
+          </p>
+        </div>
+      </section>
+
+      <section class="l-Section">
+        <h2 class="l-Section-title h3">Skills</h2>
+        <div class="l-Section-content">
+          <ul>
+            <li>
+              Highly skilled in creating performant
+              <strong class="Tag">HTML</strong>,
+              <strong class="Tag">CSS</strong>
+            </li>
+            <li>
+              Experienced with <strong class="Tag">JavaScript</strong>,
+              <strong class="Tag">Node.js</strong>,
+              <strong class="Tag">SQL</strong> (mysql) and
+              <strong class="Tag"> </strong> ()
+            </li>
+            <li>
+              Skilled in <strong class="Tag">CSS Frameworks</strong> (Bootstrap,
+              Tailwind, Materialize) and
+              <strong class="Tag">CSS Preprocessors</strong> (sass)
+            </li>
+            <li>
+              Proficient with
+              <strong class="Tag">Package Managers</strong> (NPM, Yarn) and
+              <strong class="Tag">Version Control Systems</strong> (Git)
+            </li>
+            <li>
+              <!-- Experience in building user interface in -->
+              <!-- <strong class="Tag">Component Libraries</strong>(NZ-ZORRO, Angular
+              Material). -->
+            </li>
+            <li>
+              Knowledgeable about <strong class="Tag">User Experience</strong>,
+              <strong class="Tag">Accessibility</strong>,
+              <strong class="Tag">Responsive Web Development</strong> with a
+              <strong class="Tag">Mobile First</strong> approach,
+              <strong class="Tag">Web Performance</strong>with
+              <strong class="Tag">Cross-Browser Compatibilities</strong>,
+              <strong class="Tag">Progressive Enhancement</strong>and
+              <strong class="Tag">Design Aesthetics</strong>.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="l-Section">
+        <h2 class="l-Section-title h3">Experience</h2>
+        <div class="l-Section-content">
+          <div class="l-Section-group">
+            <h3>Front-end Developer-(intern)</h3>
+            <a class="u-link" href="https://zeltenlabs.com/" target="_blank"
+              >Zeltenlabs</a
+            >
+            (kashmir) <br />
+            Nov 2022 - Present
+            <ul>
+              <li>
+                Implemented new responsive designs, mobile-first approach which
+                increased mobile traffic by 20%.
+              </li>
+              <li>
+                cloned webapp (twitter)
+              </li>
+              <li>
+                Managed whole frontend codebase, updated and improved existing
+                websites and developed new analytics dashboard with google
+                charts.
+              </li>
+              <li>
+                Collaborated with product team and backend team members for new
+                feature developments, best practices and work flow
+              </li>
+            </ul>
+          </div>
+
+          <div class="l-Section-group">
+            <h3>Front-end Developer Intern</h3>
+            <a class="u-link" href="https://boiam/" target="_blank"
+              >Baoiam Innovations Private Limited</a
+            >
+            (Uttar Pradesh) <br />
+            Nov 2021 - Mar 2022
+            <ul>
+              <li>
+                Re-architected CSS/HTML codebase with responsiveness for
+                Brainpundits Technologies website for better maintainability and
+                performance.
+              </li>
+              <li>
+                Delivered front-end work for various external and internal
+                projects to the backend team.
+              </li>
+              <li>
+                Developed new landing page and websites during restructing
+                process.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="l-Section">
+        <h2 class="l-Section-title h3">Education</h2>
+        <div class="l-Section-content">
+          <h3>BCA</h3>
+          <a class="u-link" href="https://www.GDC BEERWAH/"
+            >Orissa Engineering College</a
+          >
+          (Bhubaneswar) <br />
+          2021 - 2024
+          <p>
+            A full-time degree programme ==
+           
+          </p>
+        </div>
+      </section>
+    </article>
+
+    <div class="l-Wrapper u-keyline">
+      <div class="l-Footer">
+        <div class="l-Footer-col">
+          <strong class="Tag">Mudasir Ashraf</strong>
+        </div>
+        <div class="l-Footer-col Contact">
+          <a href="tel:+91-7006659980">+91-7006659980</a>
+          <a href="mailto:mudasirashraf156@gmail.com.com">mudasirashraf156@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
